@@ -9,7 +9,7 @@ module.exports = {
       host: ["159.65.121.101"],
       ref: "origin/main",
       repo: "git@github.com:nfactorial-incubator/live-backend.git",
-      path: "~/n-live-backend",
+      path: "n-live-backend/",
       'post-setup': "ls -la",
       'pre-deploy-local': "echo 'Starting deployment...'",
       'post-deploy': "npm install",
