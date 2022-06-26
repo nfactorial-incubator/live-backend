@@ -10,9 +10,8 @@ module.exports = {
       ref: "origin/main",
       repo: "git@github.com:nfactorial-incubator/live-backend.git",
       path: "n-live-backend/",
-      'post-setup': "ls -la",
-      'pre-deploy-local': "echo 'Starting deployment...'",
-      'post-deploy': "npm install",
+      'post-setup': "npm install",
+      'post-deploy': 'pm2 startOrRestart ecosystem.config.js --env production',
     },
   }
 }
