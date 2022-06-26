@@ -6,7 +6,7 @@ module.exports = {
   deploy: {
     production: {
       user: "root",
-      host: ["159.65.121.10"],
+      host: ["159.65.121.101"],
       ref: "origin/main",
       repo: "git@github.com:nfactorial-incubator/live-backend.git",
       path: "~/n-live-backend",
