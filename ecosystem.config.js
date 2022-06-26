@@ -17,7 +17,7 @@ module.exports = {
             host: ['159.65.121.101'],
             ref: 'origin/main',
             repo: 'git@github.com:nfactorial-incubator/live-backend.git',
-            path: 'n-live-backend/',
+            path: '/root/n-live-backend/',
             'post-deploy':
                 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
             env: {
