@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   apps: [{
     name: "n-live-backend",
@@ -10,8 +12,14 @@ module.exports = {
       ref: "origin/main",
       repo: "git@github.com:nfactorial-incubator/live-backend.git",
       path: "n-live-backend/",
-      'post-setup': "npm install",
-      'post-deploy': 'pm2 startOrRestart ecosystem.config.js --env production',
+      'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
+        env: {
+            PORT: process.env.PORT,
+            MONGO_URI: process.env.MONGO.URI,
+            TOKEN_KEY: process.env.TOKEN_KEY,
+            MENTOR_SECRET: process.env.TOKEN_SECRET,
+            TZ: process.env.TZ
+        }
     },
   }
 }
