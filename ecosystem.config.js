@@ -4,6 +4,10 @@ module.exports = {
   apps: [{
     name: "n-live-backend",
     script: "src/index.js"
+    version: "1.0.0",
+    "env_production": {
+       "NODE_ENV": "production"
+    }
   }],
   deploy: {
     production: {
