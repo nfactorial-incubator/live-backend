@@ -14,21 +14,16 @@ const eventController = require('./controllers/event.js');
 const dinnerReservationController = require('./controllers/dinnerReservation.js');
 
 const morgan = require('morgan');
+const welcomeHandler = require('./middleware/welcomeHandler.js');
 const app = express();
 
-// middleware
-var whitelist = ['http://localhost:3000']; //white list consumers
 var corsOptions = {
     origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(null, false);
-        }
+        callback(null, true);
     },
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    credentials: true, //Credentials are cookies, authorization headers or TLS client certificates.
+    optionsSuccessStatus: 200,
+    credentials: true,
     allowedHeaders: [
         'Content-Type',
         'Authorization',
@@ -44,9 +39,9 @@ app.use(morgan('tiny'));
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ limit: '50mb' }));
+
 app.use('/api', isAuth);
 app.use(unauthorizedHandler);
-
 app.use('/auth', authController);
 app.use('/api/dashboard', dashboardController);
 app.use('/api/hw/assignment', hwAssignmentController);
@@ -56,5 +51,6 @@ app.use('/api/user', userController);
 app.use('/api/check', checkController);
 app.use('/api/event', eventController);
 app.use('/api/dinner/reservation', dinnerReservationController);
+app.use(welcomeHandler);
 
 module.exports = app;
