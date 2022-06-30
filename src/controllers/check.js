@@ -23,9 +23,6 @@ const checkIn = async (req, res) => {
         );
 
         return res.status(200).json(updated.checks.pop());
-        // return res.status(200).json({
-        //     message: `Check In Successful at ${updated.checks.pop().createdAt}`
-        // });
     } catch (err) {
         console.log(err);
         return res.status(502).json({ message: 'some shit on our side' });

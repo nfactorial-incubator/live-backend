@@ -5,16 +5,17 @@ const isAuth = require('./middleware/isAuth.js');
 const unauthorizedHandler = require('./middleware/unauthorizedHandler.js');
 const hwAssignmentController = require('./controllers/hwAssignment.js');
 const hwSubmissionController = require('./controllers/hwSubmission.js');
-const ideaSubmissionController = require('./controllers/ideaSubmission.js');
+const projectController = require('./controllers/project.js');
 const dashboardController = require('./controllers/dashboard.js');
 const authController = require('./controllers/auth.js');
 const userController = require('./controllers/user.js');
 const checkController = require('./controllers/check.js');
 const eventController = require('./controllers/event.js');
 const dinnerReservationController = require('./controllers/dinnerReservation.js');
+const welcomeHandler = require('./middleware/welcomeHandler.js');
+const errorHandler = require('./middleware/errorHandler.js');
 
 const morgan = require('morgan');
-const welcomeHandler = require('./middleware/welcomeHandler.js');
 const app = express();
 
 var corsOptions = {
@@ -46,11 +47,12 @@ app.use('/auth', authController);
 app.use('/api/dashboard', dashboardController);
 app.use('/api/hw/assignment', hwAssignmentController);
 app.use('/api/hw/submission', hwSubmissionController);
-app.use('/api/idea/submission', ideaSubmissionController);
+app.use('/api/project', projectController);
 app.use('/api/user', userController);
 app.use('/api/check', checkController);
 app.use('/api/event', eventController);
 app.use('/api/dinner/reservation', dinnerReservationController);
 app.use(welcomeHandler);
+app.use(errorHandler);
 
 module.exports = app;

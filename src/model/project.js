@@ -1,12 +1,24 @@
 const mongoose = require('mongoose');
 const Comment = require('./comment.js');
 
-const ideaSubmissionSchema = new mongoose.Schema({
+const projectSchema = new mongoose.Schema({
     title: {
         type: String,
         default: null
     },
     description: {
+        type: String,
+        default: null
+    },
+    githubUrl: {
+        type: String,
+        default: null
+    },
+    deployedUrl: {
+        type: String,
+        default: null
+    },
+    emojis: {
         type: String,
         default: null
     },
@@ -34,4 +46,4 @@ const ideaSubmissionSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('ideaSubmission', ideaSubmissionSchema);
+module.exports = mongoose.model('project', projectSchema);
