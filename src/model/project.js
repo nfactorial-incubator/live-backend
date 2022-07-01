@@ -22,13 +22,17 @@ const projectSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    nickname: {
+        type: String,
+        default: null
+    },
+    fullname: {
+        type: String,
+        default: null
+    },
     studentId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
-    },
-    mentorId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: null
     },
     comments: {
         type: [Comment],
